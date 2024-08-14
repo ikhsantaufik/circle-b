@@ -5,7 +5,7 @@
   "type": "commonjs",
   "scripts": {
     "dev": "nodemon src/index.ts",
-    "build": "tsc && prisma migrate deploy && prisma generate",
+    "build": "tsc && copyfiles -u 1 src/public/header.jpg dist && copyfiles -u 1 src/templates/mail-template.html dist && prisma generate",
     "start": "node dist/index.js",
     "swagger:generate": "nodemon src/libs/swagger.ts"
   },
