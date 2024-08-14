@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon src/index.ts",
     "build": "tsc",
-    "start": "node src/index.ts",
+    "start": "node dist/index.ts",
     "postinstall": "prisma generate",
     "swagger:generate": "nodemon src/libs/swagger.ts"
   },
