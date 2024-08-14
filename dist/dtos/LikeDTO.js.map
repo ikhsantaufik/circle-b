@@ -1,0 +1,1 @@
+{"version":3,"file":"LikeDTO.js","sourceRoot":"","sources":["../../src/dtos/LikeDTO.ts"],"names":[],"mappings":";;AAAA,MAAM,OAAO;IAIT,YAAY,EAAE,QAAQ,EAAE,QAAQ,EAAE;QAC9B,IAAI,CAAC,QAAQ,GAAG,QAAQ,CAAA;QACxB,IAAI,CAAC,QAAQ,GAAG,QAAQ,CAAA;IAC5B,CAAC;CACJ;AAED,kBAAe,OAAO,CAAA"}

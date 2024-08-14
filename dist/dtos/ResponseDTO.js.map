@@ -1,0 +1,1 @@
+{"version":3,"file":"ResponseDTO.js","sourceRoot":"","sources":["../../src/dtos/ResponseDTO.ts"],"names":[],"mappings":";;AAAA,MAAM,WAAW;IAKb,YAAY,EAAE,KAAK,EAAE,OAAO,EAAE,IAAI,EAAE;QAChC,IAAI,CAAC,KAAK,GAAG,KAAK,CAAA;QAClB,IAAI,CAAC,OAAO,GAAG,OAAO,CAAA;QACtB,IAAI,CAAC,IAAI,GAAG,IAAI,CAAA;IACpB,CAAC;CACJ;AAED,kBAAe,WAAW,CAAA"}

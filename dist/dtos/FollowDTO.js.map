@@ -1,0 +1,1 @@
+{"version":3,"file":"FollowDTO.js","sourceRoot":"","sources":["../../src/dtos/FollowDTO.ts"],"names":[],"mappings":";;AAAA,MAAM,SAAS;IAIX,YAAY,EAAE,QAAQ,EAAE,OAAO,EAAE;QAC7B,IAAI,CAAC,QAAQ,GAAG,QAAQ,CAAA;QACxB,IAAI,CAAC,OAAO,GAAG,OAAO,CAAA;IAC1B,CAAC;CACJ;AAED,kBAAe,SAAS,CAAA"}
