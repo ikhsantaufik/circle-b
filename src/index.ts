@@ -32,13 +32,13 @@ app.use("/v1", AppV1);
 
 AppV1.use('/', swaggerUI.serve)
 AppV1.get(
-  '/',
+  '/v1',
   swaggerUI.setup(swaggerDoc, {
     customSiteTitle: 'Circle App API',
     customfavIcon: 'NONE',
     customCss: `
                 .swagger-ui .topbar { display: none }
-                .information-container.wrapper { background: #8e3e63; padding: 2rem }
+                .information-container.wrapper { background: #009966; padding: 2rem }
                 .information-container .info { margin: 0 }
                 .information-container .info .main { margin: 0 !important}
                 .information-container .info .main .title { color: #ffffff}
