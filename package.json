@@ -5,9 +5,8 @@
   "type": "commonjs",
   "scripts": {
     "dev": "nodemon src/index.ts",
-    "build": "tsc",
+    "build": "tsc && copyfiles -u 1 src/public/header.jpg dist && copyfiles -u 1 src/templates/mail-template.html dist && prisma generate",
     "start": "node dist/index.js",
-    "postinstall": "prisma generate",
     "swagger:generate": "nodemon src/libs/swagger.ts"
   },
   "dependencies": {
