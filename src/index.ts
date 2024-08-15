@@ -25,7 +25,11 @@ const app = express();
 const AppV1 = express.Router();
 const port = PORT || 3000;
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://circle-f.vercel.app/', // Ganti dengan domain frontend Anda
+  methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+  credentials: true,
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/v1", AppV1);
@@ -38,7 +42,7 @@ AppV1.get(
     customfavIcon: 'NONE',
     customCss: `
                 .swagger-ui .topbar { display: none }
-                .information-container.wrapper { background: #009966; padding: 2rem }
+                .information-container.wrapper { background: #009966 !important; padding: 2rem }
                 .information-container .info { margin: 0 }
                 .information-container .info .main { margin: 0 !important}
                 .information-container .info .main .title { color: #ffffff}
