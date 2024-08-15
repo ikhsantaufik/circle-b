@@ -57,11 +57,11 @@ async function main() {
       limit: 499,
       standardHeaders: "draft-7",
       legacyHeaders: false,
-      // store: new RedisStore({
-      //   sendCommand: (...args: string[]) => {
-      //     return redisClient.sendCommand(args);
-      //   },
-      // }),
+      store: new RedisStore({
+        sendCommand: (...args: string[]) => {
+          return redisClient.sendCommand(args);
+        },
+      }),
     })
   );
 
@@ -113,14 +113,14 @@ async function main() {
   });
 }
 
-// initRedis().then(() => {
-main()
-  .then(async () => {
-    await prisma.$disconnect();
-  })
-  .catch(async (e) => {
-    console.error(e);
-    await prisma.$disconnect();
-    process.exit(1);
-  });
-// });
+initRedis().then(() => {
+  main()
+    .then(async () => {
+      await prisma.$disconnect();
+    })
+    .catch(async (e) => {
+      console.error(e);
+      await prisma.$disconnect();
+      process.exit(1);
+    });
+});
