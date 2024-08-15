@@ -32,4 +32,3 @@ const routes = ['../index.ts'];
 (0, swagger_autogen_1.default)({ openapi: '3.0.0' })(outputFile, routes, doc).then(() => {
     console.log('Swagger doc generated.');
 });
-//# sourceMappingURL=swagger.js.map

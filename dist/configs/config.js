@@ -22,4 +22,3 @@ exports.SALT_ROUND = process.env.SALT_ROUND;
 exports.REDIS_URL = process.env.REDIS_URL;
 exports.MAILER_USERNAME = process.env.MAILER_USERNAME;
 exports.MAILER_PASSWORD = process.env.MAILER_PASSWORD;
-//# sourceMappingURL=config.js.map

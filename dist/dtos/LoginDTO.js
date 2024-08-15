@@ -7,4 +7,3 @@ class LoginDTO {
     }
 }
 exports.default = LoginDTO;
-//# sourceMappingURL=LoginDTO.js.map

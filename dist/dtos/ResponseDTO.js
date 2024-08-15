@@ -8,4 +8,3 @@ class ResponseDTO {
     }
 }
 exports.default = ResponseDTO;
-//# sourceMappingURL=ResponseDTO.js.map

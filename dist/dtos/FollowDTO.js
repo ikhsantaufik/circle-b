@@ -7,4 +7,3 @@ class FollowDTO {
     }
 }
 exports.default = FollowDTO;
-//# sourceMappingURL=FollowDTO.js.map

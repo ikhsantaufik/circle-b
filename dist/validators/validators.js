@@ -54,4 +54,3 @@ const userSchema = joi_1.default.object({
     bio: joi_1.default.string().max(255).allow(null).optional().min(0),
 });
 exports.userSchema = userSchema;
-//# sourceMappingURL=validators.js.map

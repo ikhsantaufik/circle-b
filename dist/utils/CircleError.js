@@ -7,4 +7,3 @@ class CircleError extends Error {
     }
 }
 exports.default = CircleError;
-//# sourceMappingURL=CircleError.js.map
