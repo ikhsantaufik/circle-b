@@ -10,3 +10,4 @@ class ReplyDTO {
     }
 }
 exports.default = ReplyDTO;
+//# sourceMappingURL=ReplyDTO.js.map

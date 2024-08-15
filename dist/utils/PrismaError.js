@@ -13,3 +13,4 @@ function primsaErrorHandler(err) {
     }
 }
 exports.default = primsaErrorHandler;
+//# sourceMappingURL=PrismaError.js.map

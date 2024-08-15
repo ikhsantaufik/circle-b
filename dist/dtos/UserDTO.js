@@ -12,3 +12,4 @@ class UserDTO {
     }
 }
 exports.default = UserDTO;
+//# sourceMappingURL=UserDTO.js.map

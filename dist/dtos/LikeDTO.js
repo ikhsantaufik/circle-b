@@ -7,3 +7,4 @@ class LikeDTO {
     }
 }
 exports.default = LikeDTO;
+//# sourceMappingURL=LikeDTO.js.map

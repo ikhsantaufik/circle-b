@@ -6,3 +6,4 @@ class ForgotPasswordDTO {
     }
 }
 exports.default = ForgotPasswordDTO;
+//# sourceMappingURL=ForgotPasswordDTO.js.map

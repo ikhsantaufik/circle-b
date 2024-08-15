@@ -20,3 +20,4 @@ function authenticate(req, res, next) {
     });
 }
 exports.default = authenticate;
+//# sourceMappingURL=authenticate.js.map

@@ -14,3 +14,4 @@ class Hasher {
     }
 }
 exports.default = new Hasher();
+//# sourceMappingURL=Hasher.js.map

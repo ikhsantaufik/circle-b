@@ -1,13 +1,4 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -55,54 +46,53 @@ AppV1.get('/', swagger_ui_express_1.default.setup(swagger_json_1.default, {
         persistAuthorization: true,
     },
 }));
-function main() {
-    return __awaiter(this, void 0, void 0, function* () {
-        AppV1.use((0, express_rate_limit_1.rateLimit)({
-            windowMs: 15 * 60 * 1000,
-            limit: 499,
-            standardHeaders: "draft-7",
-            legacyHeaders: false,
-            store: new rate_limit_redis_1.RedisStore({
-                sendCommand: (...args) => {
-                    return redis_2.redisClient.sendCommand(args);
-                },
-            }),
-        }));
-        AppV1.post("/register", AuthControllers_1.default.register);
-        AppV1.post("/login", AuthControllers_1.default.login);
-        AppV1.post("/auth/forgot", AuthControllers_1.default.forgotPassword);
-        AppV1.patch("/auth/reset", authenticate_1.default, AuthControllers_1.default.resetPassword);
-        AppV1.get("/vibes", authenticate_1.default, redis_3.default.getVibes, VibeControllers_1.default.getVibes);
-        AppV1.get("/vibes/:id", authenticate_1.default, VibeControllers_1.default.getVibe);
-        AppV1.get("/vibes/user/:id", authenticate_1.default, VibeControllers_1.default.getUserVibes);
-        AppV1.post("/vibes", upload_1.default.single("image"), authenticate_1.default, VibeControllers_1.default.postVibes);
-        AppV1.delete("/vibes/:id", authenticate_1.default, VibeControllers_1.default.deleteVibe);
-        AppV1.get("/follow/:id", authenticate_1.default, FollowControllers_1.default.follow);
-        AppV1.get("/unfollow/:id", authenticate_1.default, FollowControllers_1.default.unfollow);
-        AppV1.get("/find", authenticate_1.default, UserControllers_1.default.searchUser);
-        AppV1.post("/likes", authenticate_1.default, LikeControllers_1.default.likeMechanism);
-        AppV1.get("/me", authenticate_1.default, UserControllers_1.default.getLoggedUser);
-        AppV1.get("/users/:id", authenticate_1.default, UserControllers_1.default.getUser);
-        AppV1.get("/users", authenticate_1.default, UserControllers_1.default.getUsers);
-        AppV1.patch("/users/me", upload_1.default.fields([
-            { name: "avatar", maxCount: 1 },
-            { name: "banner", maxCount: 1 },
-        ]), authenticate_1.default, UserControllers_1.default.editUser);
-        AppV1.delete("/replies/:id", authenticate_1.default, ReplyControllers_1.default.deleteReply);
-        AppV1.post("/replies", upload_1.default.single("image"), authenticate_1.default, ReplyControllers_1.default.postReply);
-        app.listen(port, () => {
-            console.log(`App is listening on port ${port}`);
-        });
+async function main() {
+    AppV1.use((0, express_rate_limit_1.rateLimit)({
+        windowMs: 15 * 60 * 1000,
+        limit: 499,
+        standardHeaders: "draft-7",
+        legacyHeaders: false,
+        store: new rate_limit_redis_1.RedisStore({
+            sendCommand: (...args) => {
+                return redis_2.redisClient.sendCommand(args);
+            },
+        }),
+    }));
+    AppV1.post("/register", AuthControllers_1.default.register);
+    AppV1.post("/login", AuthControllers_1.default.login);
+    AppV1.post("/auth/forgot", AuthControllers_1.default.forgotPassword);
+    AppV1.patch("/auth/reset", authenticate_1.default, AuthControllers_1.default.resetPassword);
+    AppV1.get("/vibes", authenticate_1.default, redis_3.default.getVibes, VibeControllers_1.default.getVibes);
+    AppV1.get("/vibes/:id", authenticate_1.default, VibeControllers_1.default.getVibe);
+    AppV1.get("/vibes/user/:id", authenticate_1.default, VibeControllers_1.default.getUserVibes);
+    AppV1.post("/vibes", upload_1.default.single("image"), authenticate_1.default, VibeControllers_1.default.postVibes);
+    AppV1.delete("/vibes/:id", authenticate_1.default, VibeControllers_1.default.deleteVibe);
+    AppV1.get("/follow/:id", authenticate_1.default, FollowControllers_1.default.follow);
+    AppV1.get("/unfollow/:id", authenticate_1.default, FollowControllers_1.default.unfollow);
+    AppV1.get("/find", authenticate_1.default, UserControllers_1.default.searchUser);
+    AppV1.post("/likes", authenticate_1.default, LikeControllers_1.default.likeMechanism);
+    AppV1.get("/me", authenticate_1.default, UserControllers_1.default.getLoggedUser);
+    AppV1.get("/users/:id", authenticate_1.default, UserControllers_1.default.getUser);
+    AppV1.get("/users", authenticate_1.default, UserControllers_1.default.getUsers);
+    AppV1.patch("/users/me", upload_1.default.fields([
+        { name: "avatar", maxCount: 1 },
+        { name: "banner", maxCount: 1 },
+    ]), authenticate_1.default, UserControllers_1.default.editUser);
+    AppV1.delete("/replies/:id", authenticate_1.default, ReplyControllers_1.default.deleteReply);
+    AppV1.post("/replies", upload_1.default.single("image"), authenticate_1.default, ReplyControllers_1.default.postReply);
+    app.listen(port, () => {
+        console.log(`App is listening on port ${port}`);
     });
 }
 (0, redis_1.initRedis)().then(() => {
     main()
-        .then(() => __awaiter(void 0, void 0, void 0, function* () {
-        yield prisma.$disconnect();
-    }))
-        .catch((e) => __awaiter(void 0, void 0, void 0, function* () {
+        .then(async () => {
+        await prisma.$disconnect();
+    })
+        .catch(async (e) => {
         console.error(e);
-        yield prisma.$disconnect();
+        await prisma.$disconnect();
         process.exit(1);
-    }));
+    });
 });
+//# sourceMappingURL=index.js.map

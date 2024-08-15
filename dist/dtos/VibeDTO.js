@@ -9,3 +9,4 @@ class VibeDTO {
     }
 }
 exports.default = VibeDTO;
+//# sourceMappingURL=VibeDTO.js.map

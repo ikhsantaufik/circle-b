@@ -12,3 +12,4 @@ class RegisterDTO {
     }
 }
 exports.default = RegisterDTO;
+//# sourceMappingURL=RegisterDTO.js.map

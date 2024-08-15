@@ -19,3 +19,4 @@ const storage = new multer_storage_cloudinary_1.CloudinaryStorage({
 });
 const uploader = (0, multer_1.default)({ storage: storage });
 exports.default = uploader;
+//# sourceMappingURL=upload.js.map

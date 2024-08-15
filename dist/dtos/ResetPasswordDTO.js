@@ -7,3 +7,4 @@ class ResetPasswordDTO {
     }
 }
 exports.default = ResetPasswordDTO;
+//# sourceMappingURL=ResetPasswordDTO.js.map

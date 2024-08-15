@@ -7,3 +7,4 @@ class ServiceResponseDTO {
     }
 }
 exports.default = ServiceResponseDTO;
+//# sourceMappingURL=ServiceResponseDTO.js.map
