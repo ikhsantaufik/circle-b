@@ -22,7 +22,7 @@ class VibeControllers {
             )
         }
 
-        await Redis.setVibes(payload)
+        // await Redis.setVibes(payload)
 
         return res.status(200).json(
             new ResponseDTO<VibeWithDetailType>({

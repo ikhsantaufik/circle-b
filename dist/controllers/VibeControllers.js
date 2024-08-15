@@ -17,7 +17,7 @@ class VibeControllers {
                 data: null,
             }));
         }
-        await redis_1.default.setVibes(payload);
+        // await Redis.setVibes(payload)
         return res.status(200).json(new ResponseDTO_1.default({
             error,
             message: {

@@ -27,7 +27,7 @@ class ReplyControllers {
             }));
         }
         // to make sure getAllVibes request gets the latest vibes data
-        await redis_1.default.deleteVibes();
+        // await Redis.deleteVibes()
         return res.status(200).json(new ResponseDTO_1.default({
             error,
             message: {

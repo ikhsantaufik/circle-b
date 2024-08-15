@@ -29,7 +29,7 @@ class ReplyControllers {
         }
 
         // to make sure getAllVibes request gets the latest vibes data
-        await Redis.deleteVibes()
+        // await Redis.deleteVibes()
 
         return res.status(200).json(
             new ResponseDTO<ReplyType>({

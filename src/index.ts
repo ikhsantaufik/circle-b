@@ -70,7 +70,7 @@ async function main() {
   AppV1.post("/auth/forgot", AuthControllers.forgotPassword);
   AppV1.patch("/auth/reset", authenticate, AuthControllers.resetPassword);
 
-  AppV1.get("/vibes", authenticate, Redis.getVibes, VibeControllers.getVibes);
+  AppV1.get("/vibes", authenticate, VibeControllers.getVibes);
   AppV1.get("/vibes/:id", authenticate, VibeControllers.getVibe);
   AppV1.get("/vibes/user/:id", authenticate, VibeControllers.getUserVibes);
   AppV1.post(

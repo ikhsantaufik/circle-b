@@ -5,10 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const client_1 = require("@prisma/client");
 const config_1 = require("./configs/config");
-const redis_1 = require("./libs/redis");
 const express_rate_limit_1 = require("express-rate-limit");
-const rate_limit_redis_1 = require("rate-limit-redis");
-const redis_2 = require("./libs/redis");
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
@@ -21,7 +18,6 @@ const UserControllers_1 = __importDefault(require("./controllers/UserControllers
 const FollowControllers_1 = __importDefault(require("./controllers/FollowControllers"));
 const authenticate_1 = __importDefault(require("./middlewares/authenticate"));
 const upload_1 = __importDefault(require("./middlewares/upload"));
-const redis_3 = __importDefault(require("./middlewares/redis"));
 const prisma = new client_1.PrismaClient();
 const app = (0, express_1.default)();
 const AppV1 = express_1.default.Router();
@@ -52,17 +48,17 @@ async function main() {
         limit: 499,
         standardHeaders: "draft-7",
         legacyHeaders: false,
-        store: new rate_limit_redis_1.RedisStore({
-            sendCommand: (...args) => {
-                return redis_2.redisClient.sendCommand(args);
-            },
-        }),
+        // store: new RedisStore({
+        //   sendCommand: (...args: string[]) => {
+        //     return redisClient.sendCommand(args);
+        //   },
+        // }),
     }));
     AppV1.post("/register", AuthControllers_1.default.register);
     AppV1.post("/login", AuthControllers_1.default.login);
     AppV1.post("/auth/forgot", AuthControllers_1.default.forgotPassword);
     AppV1.patch("/auth/reset", authenticate_1.default, AuthControllers_1.default.resetPassword);
-    AppV1.get("/vibes", authenticate_1.default, redis_3.default.getVibes, VibeControllers_1.default.getVibes);
+    AppV1.get("/vibes", authenticate_1.default, VibeControllers_1.default.getVibes);
     AppV1.get("/vibes/:id", authenticate_1.default, VibeControllers_1.default.getVibe);
     AppV1.get("/vibes/user/:id", authenticate_1.default, VibeControllers_1.default.getUserVibes);
     AppV1.post("/vibes", upload_1.default.single("image"), authenticate_1.default, VibeControllers_1.default.postVibes);
@@ -84,15 +80,15 @@ async function main() {
         console.log(`App is listening on port ${port}`);
     });
 }
-(0, redis_1.initRedis)().then(() => {
-    main()
-        .then(async () => {
-        await prisma.$disconnect();
-    })
-        .catch(async (e) => {
-        console.error(e);
-        await prisma.$disconnect();
-        process.exit(1);
-    });
+// initRedis().then(() => {
+main()
+    .then(async () => {
+    await prisma.$disconnect();
+})
+    .catch(async (e) => {
+    console.error(e);
+    await prisma.$disconnect();
+    process.exit(1);
 });
+// });
 //# sourceMappingURL=index.js.map
