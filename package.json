@@ -5,10 +5,10 @@
   "type": "commonjs",
   "scripts": {
     "dev": "nodemon src/index.ts",
-    "build": "tsc && prisma generate",
-    "start": "nodemon src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
     "postinstall": "prisma generate",
-    "swagger": "node swagger/swagger.js"
+    "swagger:generate": "nodemon src/libs/swagger.ts"
   },
   "dependencies": {
     "@prisma/client": "^5.14.0",
