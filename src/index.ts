@@ -23,7 +23,7 @@ const prisma = new PrismaClient();
 
 const app = express();
 const AppV1 = express.Router();
-const port = PORT;
+const port = PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
